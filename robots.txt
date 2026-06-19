@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://midmuhma.github.io/cn-portal-aiyouxi-com-cn/sitemap.xml

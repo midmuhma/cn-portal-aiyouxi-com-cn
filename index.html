@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再访 · 爱游戏｜信息卡片收藏页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            background: #f4f7fb;
+            color: #1e2a3a;
+            line-height: 1.6;
+            padding: 0 0 3rem;
+        }
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #1b2e44 100%);
+            color: #eaf0f8;
+            padding: 4rem 1.5rem 3.5rem;
+            text-align: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.6rem;
+        }
+        .hero h1 small {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #b0cced;
+            margin-left: 0.5rem;
+        }
+        .hero p {
+            max-width: 540px;
+            margin: 0.8rem auto 1.4rem;
+            font-size: 1.1rem;
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+        .hero .bookmark-tip {
+            display: inline-block;
+            background: rgba(255,255,255,0.08);
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #d3e2f7;
+            margin-top: 1rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.2rem;
+        }
+        .intro-card {
+            background: white;
+            border-radius: 28px;
+            padding: 2.8rem 2.2rem;
+            margin: -1.8rem 0 2.4rem;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.04);
+            position: relative;
+            z-index: 2;
+        }
+        .intro-card p {
+            font-size: 1.08rem;
+            color: #1e2a3a;
+            margin-bottom: 1.2rem;
+        }
+        .intro-card p:last-child {
+            margin-bottom: 0;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 2.4rem 0 2rem;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem 1.4rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+            border: 1px solid #eaeef4;
+            transition: all 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 28px rgba(0,0,0,0.06);
+            border-color: #b8d0e8;
+        }
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+            color: #0b1a2e;
+        }
+        .feature-card h3 span {
+            display: inline-block;
+            background: #dde8f5;
+            color: #1b3e5a;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            margin-left: 0.4rem;
+            vertical-align: middle;
+        }
+        .feature-card p {
+            color: #2c4058;
+            font-size: 0.98rem;
+        }
+        .audience-section {
+            background: #e9eff8;
+            border-radius: 28px;
+            padding: 2.4rem 2.2rem;
+            margin: 1.8rem 0 2.2rem;
+        }
+        .audience-section h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1.4rem;
+            color: #0b1a2e;
+        }
+        .audience-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.2rem;
+        }
+        .audience-tags .tag {
+            background: white;
+            padding: 0.45rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.98rem;
+            border: 1px solid #d2e0ee;
+            color: #1b2e44;
+        }
+        .audience-tags .tag strong {
+            font-weight: 500;
+        }
+        .faq-mini {
+            background: white;
+            border-radius: 28px;
+            padding: 2rem 2.2rem;
+            margin: 2.4rem 0 1.8rem;
+        }
+        .faq-mini h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 1.4rem;
+            color: #0b1a2e;
+        }
+        .faq-item {
+            margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid #e7edf5;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .faq-item .q {
+            font-weight: 500;
+            color: #13273c;
+            margin-bottom: 0.25rem;
+        }
+        .faq-item .a {
+            color: #3f566b;
+            font-size: 0.96rem;
+        }
+        .link-note {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem 2.2rem;
+            margin: 2rem 0;
+            border-left: 6px solid #2b5c8a;
+        }
+        .link-note p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        a {
+            color: #1b5c8a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: border 0.15s;
+        }
+        a:hover {
+            border-bottom: 2px solid #1b5c8a;
+        }
+        .footer-note {
+            text-align: center;
+            margin-top: 2.8rem;
+            font-size: 0.9rem;
+            color: #5f738b;
+            border-top: 1px solid #dce5ef;
+            padding-top: 2rem;
+        }
+        @media (max-width: 800px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.2rem;
+            }
+            .intro-card {
+                padding: 1.8rem 1.5rem;
+            }
+        }
+        @media (max-width: 500px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                padding: 3rem 1rem 2.8rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .hero .bookmark-tip {
+                font-size: 0.85rem;
+                padding: 0.3rem 1rem;
+            }
+            .audience-section, .faq-mini, .link-note {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>爱游戏 <small>信息卡片</small></h1>
+        <p>再次打开，像重逢旧友。收藏、备忘，让每一次探索都有迹可循。</p>
+        <div class="bookmark-tip">⭐ 加入浏览器收藏夹 · 随时回访</div>
+    </section>
+
+    <div class="container">
+        <!-- 主视觉 / 再次访问卡片 -->
+        <div class="intro-card">
+            <p>有些页面值得反复停留。无论你是偶然发现，还是特意回来查资料、找灵感，<strong>爱游戏</strong>都愿意成为你常驻的角落。不必记住复杂链接，只需把喜欢的站点收进书签，下次打开就能继续上次的节奏。</p>
+            <p>这里的内容一直安静更新，不打扰，却总能在你需要时出现。就像一本翻不腻的册子，每次回访都有新的段落等你发现。</p>
+        </div>
+
+        <!-- 用途卡片（特点 / 场景） -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>📌 个人备忘库 <span>常看常新</span></h3>
+                <p>把值得关注的页面集中收纳，不用每次重新检索。爱游戏保持稳定，适合当作长期信息锚点。</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔄 回访友好 <span>浏览节奏</span></h3>
+                <p>结构清晰，不堆砌弹窗。再次访问时不会感到陌生，内容分区让你快速定位上次看到的地方。</p>
+            </div>
+            <div class="feature-card">
+                <h3>📎 持续关注 <span>收藏习惯</span></h3>
+                <p>遇到感兴趣的主题，顺手加入收藏。后续回来还能看到延续内容，不必担心断连。</p>
+            </div>
+        </div>
+
+        <!-- 适合人群 -->
+        <div class="audience-section">
+            <h2>适合这样的你</h2>
+            <div class="audience-tags">
+                <span class="tag"><strong>·</strong> 喜欢把好页面存起来的搜集者</span>
+                <span class="tag"><strong>·</strong> 习惯分多次看完一篇长内容</span>
+                <span class="tag"><strong>·</strong> 不希望站点总变来变去的稳定派</span>
+                <span class="tag"><strong>·</strong> 想找一个干净、可重复访问的角落</span>
+                <span class="tag"><strong>·</strong> 对游戏文化、泛娱乐话题有好奇心</span>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要：收藏与回访相关 -->
+        <div class="faq-mini">
+            <h2>常见备忘 · 回访 FAQ</h2>
+            <div class="faq-item">
+                <div class="q">❓ 为什么建议把页面加入收藏夹？</div>
+                <div class="a">收藏是最轻量的“再次访问”方式。不用每次搜索，直接点击书签就能回到爱游戏。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">❓ 页面内容会频繁变动吗？</div>
+                <div class="a">结构保持稳定，更新时会保留原有框架，让你回访时不会迷失。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">❓ 收藏后如何快速找到之前的位置？</div>
+                <div class="a">利用浏览器书签或稍后读工具，配合页面内清晰的区块标题，轻松定位。</div>
+            </div>
+        </div>
+
+        <!-- 自然链接段落：包含 爱游戏 链接，非硬广 -->
+        <div class="link-note">
+            <p>
+                如果你还没有为这个站点建立书签，现在可以顺手保存。下次想安静浏览内容时，直接从收藏夹打开 <a href="https://cn-portal-aiyouxi.com.cn">爱游戏</a>，就像翻开一本常读常新的笔记。页面持续存在，内容温和生长，适合反复回味。
+            </p>
+            <p style="margin-top: 0.6rem; font-size: 0.96rem; color: #3f566b;">
+                —— 收藏一次，回访自由。
+            </p>
+        </div>
+
+        <div class="footer-note">
+            温和迭代 · 保持联系 · 爱游戏
+        </div>
+    </div>
+</body>
+</html>
