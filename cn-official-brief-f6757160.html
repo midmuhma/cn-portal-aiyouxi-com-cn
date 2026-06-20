@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中彩网 · 每日对照与延伸阅读</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      background: #f4f9fc;
+      color: #1c2e36;
+      line-height: 1.7;
+      padding: 0 1rem;
+    }
+
+    .wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 0 3rem;
+    }
+
+    /* ——— hero 开场 —— */
+    .hero {
+      margin-bottom: 2.8rem;
+    }
+
+    .hero small {
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      color: #3d7a8c;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      color: #0d3b45;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero .lead {
+      font-size: 1.1rem;
+      color: #265b68;
+      max-width: 680px;
+      border-left: 3px solid #3d9eb3;
+      padding-left: 1.2rem;
+    }
+
+    /* ——— 承接段落 —— */
+    .bridge {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(2px);
+      padding: 1.8rem 2rem;
+      border-radius: 24px;
+      margin-bottom: 2.8rem;
+      box-shadow: 0 4px 12px rgba(0,40,50,0.04);
+    }
+
+    .bridge p {
+      margin-bottom: 1.2rem;
+      font-size: 1.02rem;
+    }
+
+    .bridge p:last-child {
+      margin-bottom: 0;
+    }
+
+    .bridge a {
+      color: #0f6f82;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed #7bb8c6;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .bridge a:hover {
+      color: #053b46;
+      border-bottom-color: #053b46;
+    }
+
+    /* ——— 网格卡片（特点列表） —— */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.8rem 1.6rem;
+      box-shadow: 0 8px 18px rgba(0, 60, 70, 0.04);
+      transition: transform 0.15s, box-shadow 0.2s;
+      border: 1px solid rgba(164, 213, 222, 0.25);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 26px rgba(0, 60, 70, 0.08);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #0c4754;
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.02em;
+    }
+
+    .card h3 span {
+      display: inline-block;
+      background: #d5eef3;
+      color: #0b4d5b;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 28px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-right: 8px;
+    }
+
+    .card p {
+      color: #2f4f5a;
+      font-size: 0.95rem;
+      flex: 1;
+    }
+
+    /* ——— 温和引用 / 场景 —— */
+    .scene-block {
+      background: #e5f2f5;
+      border-radius: 32px;
+      padding: 2rem 2.2rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .scene-block h2 {
+      font-weight: 450;
+      font-size: 1.3rem;
+      color: #04323c;
+      margin-bottom: 1.2rem;
+    }
+
+    .scene-block ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .scene-block li {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(120, 170, 182, 0.2);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .scene-block li:last-child {
+      border-bottom: none;
+    }
+
+    .scene-block li::before {
+      content: "▹";
+      color: #14778b;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* ——— FAQ 摘要（简洁） —— */
+    .faq-mini {
+      margin-bottom: 2.5rem;
+    }
+
+    .faq-mini details {
+      background: white;
+      border-radius: 20px;
+      margin-bottom: 0.8rem;
+      padding: 0.2rem 1.6rem;
+      border: 1px solid #d2e7ec;
+      transition: border 0.15s;
+    }
+
+    .faq-mini details[open] {
+      border-color: #8fc3cf;
+    }
+
+    .faq-mini summary {
+      font-weight: 480;
+      padding: 1rem 0;
+      cursor: pointer;
+      color: #0c4957;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-mini summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-mini summary::after {
+      content: "＋";
+      color: #3d9eb3;
+      font-size: 1.1rem;
+      transition: transform 0.2s;
+    }
+
+    .faq-mini details[open] summary::after {
+      content: "−";
+    }
+
+    .faq-mini .answer {
+      padding-bottom: 1.2rem;
+      color: #2a555f;
+      font-size: 0.95rem;
+    }
+
+    /* ——— 温和结尾 —— */
+    .gentle-footer {
+      background: #dbeef2;
+      border-radius: 30px;
+      padding: 1.8rem 2rem;
+      text-align: center;
+    }
+
+    .gentle-footer p {
+      color: #134c58;
+      font-size: 1rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .gentle-footer .ref-link {
+      margin-top: 1rem;
+      font-size: 0.98rem;
+    }
+
+    .gentle-footer .ref-link a {
+      color: #105e6e;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px dotted #489aa8;
+    }
+
+    .gentle-footer .ref-link a:hover {
+      color: #02313b;
+      border-bottom-color: #02313b;
+    }
+
+    /* ——— 响应式 —— */
+    @media (max-width: 540px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .bridge {
+        padding: 1.4rem 1.2rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      .scene-block {
+        padding: 1.4rem 1.2rem;
+      }
+      .faq-mini details {
+        padding: 0.1rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- hero 开场短句 -->
+    <div class="hero">
+      <small>日常 · 对照 · 延伸</small>
+      <h1>查对照，读延伸，<br>一个站点就够了</h1>
+      <div class="lead">
+        信息越丰富，越需要一处沉静的参考锚点。<br>
+        不匆忙，不盲从，每天翻翻心里就有底。
+      </div>
+    </div>
+
+    <!-- 承接段落 -->
+    <div class="bridge">
+      <p>
+        很多人习惯在午休或睡前，打开 <a href="https://cn-official-zhcw.com">中彩网</a>，不是为了追逐什么消息，而是想看看近期的概括数据、玩法对照表、以及偶尔出现的延伸分析。那种感觉就像在阅览一份整洁的剪报——没有弹窗，没有浮夸的标题，只有清楚的信息陈列。
+      </p>
+      <p>
+        对于需要快速查阅号码分布、规则变动或历史对照的人来说，这种一目了然的体验尤其珍贵。不用在几个页面之间来回跳，也不用猜测哪个数字才是最新的。
+      </p>
+    </div>
+
+    <!-- 特点列表：网格卡片 -->
+    <div class="card-grid">
+      <div class="card">
+        <h3><span>1</span> 对照表清晰</h3>
+        <p>多期数据并排展示，区间、冷热、走势一目了然。适合做个人笔记时快速参考。</p>
+      </div>
+      <div class="card">
+        <h3><span>2</span> 情景化延伸</h3>
+        <p>不定期更新玩法背景、规则沿革与冷门知识点，给日常查阅增添一层理解脉络。</p>
+      </div>
+      <div class="card">
+        <h3><span>3</span> 无干扰界面</h3>
+        <p>版式疏朗，文字为主，不堆砌图片或横幅。移动端阅读同样从容。</p>
+      </div>
+    </div>
+
+    <!-- 场景段落：用列表展示几个典型日常 -->
+    <div class="scene-block">
+      <h2>这些时刻，你会想打开它</h2>
+      <ul>
+        <li>想核对最近三期号码，却不想被五花八门的广告分散注意力。</li>
+        <li>对某个冷门玩法产生好奇，想看看它的历史对照和简单注释。</li>
+        <li>在和朋友讨论规则细节时，需要一个双方都认可的参考来源。</li>
+        <li>单纯想在安静的环境里，漫无目的地翻翻数据，当作一种放松。</li>
+      </ul>
+    </div>
+
+    <!-- FAQ 摘要（2个问题，温和口吻） -->
+    <div class="faq-mini">
+      <details>
+        <summary>“中彩网”上的信息更新频率如何？</summary>
+        <div class="answer">
+          一般来说，核心对照数据会在相关发布后同步更新。延伸阅读类内容则按周或双周节奏补充，避免信息过载。
+        </div>
+      </details>
+      <details>
+        <summary>移动端查看对照表方便吗？</summary>
+        <div class="answer">
+          页面采用自适应网格，手机横竖屏都能正常浏览。表格支持横向轻滑，字号也针对小屏做了优化，无需频繁缩放。
+        </div>
+      </details>
+    </div>
+
+    <!-- 温和结尾，自然嵌入链接 -->
+    <div class="gentle-footer">
+      <p>
+        如果你也喜欢在安静的间隙里，翻翻对照、读点延伸，可以记下这个地址——<a href="https://cn-official-zhcw.com">中彩网</a>。它不吵不闹，就在那里，等你需要的时候翻开。
+      </p>
+      <div class="ref-link">
+        <span style="color:#3a727f;">· 日常对照 · 延伸阅读 · 静下心来 ·</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
