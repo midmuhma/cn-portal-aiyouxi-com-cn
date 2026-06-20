@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>九游app · 日常查询与延伸阅读</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #f4f9fc;
+            color: #1a2b33;
+            line-height: 1.6;
+            padding: 1.2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 8px 28px rgba(0, 40, 50, 0.06);
+            padding: 2.2rem 1.8rem;
+            transition: all 0.2s;
+        }
+
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            color: #0a4c5c;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        h1 small {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: #4d727e;
+            background: #dbeae9;
+            padding: 0.1rem 0.9rem;
+            border-radius: 40px;
+            letter-spacing: 0;
+        }
+
+        .subhead {
+            font-size: 1.05rem;
+            color: #2c5f6b;
+            border-left: 4px solid #3ca3b0;
+            padding-left: 1rem;
+            margin: 0.7rem 0 1.6rem 0;
+            background: #ebf5f6;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.5;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin: 1.8rem 0 2rem;
+        }
+
+        .card {
+            background: #f9feff;
+            border: 1px solid #d5e7ec;
+            border-radius: 24px;
+            padding: 1.2rem 1rem 1rem;
+            box-shadow: 0 2px 6px rgba(40, 120, 130, 0.04);
+            transition: 0.15s ease;
+        }
+
+        .card:hover {
+            border-color: #8fcbd4;
+            background: #f4fcfd;
+            box-shadow: 0 4px 12px rgba(40, 140, 150, 0.08);
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 520;
+            color: #0b5b6b;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card h3 i {
+            display: inline-block;
+            width: 6px;
+            height: 16px;
+            background: #46b3c2;
+            border-radius: 12px;
+            margin-right: 4px;
+        }
+
+        .card p {
+            font-size: 0.92rem;
+            color: #1e3f47;
+            margin-top: 0.2rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #ddeff2;
+            color: #0e5a66;
+            font-size: 0.72rem;
+            border-radius: 40px;
+            padding: 0.1rem 0.7rem;
+            margin-top: 0.5rem;
+            letter-spacing: 0.3px;
+        }
+
+        .highlight-block {
+            background: #ecf7f9;
+            border-radius: 24px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0 1.8rem;
+            border-left: 5px solid #289aa8;
+        }
+
+        .highlight-block p {
+            color: #12363f;
+            font-size: 0.98rem;
+        }
+
+        .faq-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.6rem 0 1rem;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 20px;
+            padding: 0.9rem 1.2rem;
+            border: 1px solid #dceef1;
+            transition: 0.15s;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 530;
+            color: #064e5c;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item span {
+            font-size: 0.9rem;
+            color: #2d5c66;
+        }
+
+        .action-line {
+            margin: 2rem 0 0.2rem;
+            padding: 1.2rem 0 0.2rem;
+            border-top: 1px solid #cfe2e7;
+            text-align: center;
+        }
+
+        .action-line p {
+            font-size: 0.97rem;
+            color: #1f4f5b;
+        }
+
+        .action-line a {
+            color: #0e6d7c;
+            text-decoration: none;
+            font-weight: 500;
+            background: #e1f1f3;
+            padding: 0.15rem 0.6rem;
+            border-radius: 20px;
+            transition: 0.15s;
+            border-bottom: 1px solid transparent;
+            white-space: nowrap;
+        }
+
+        .action-line a:hover {
+            background: #c6e3e9;
+            border-bottom-color: #379ba8;
+        }
+
+        .footnote {
+            margin-top: 2rem;
+            font-size: 0.78rem;
+            color: #66858e;
+            text-align: center;
+            letter-spacing: 0.2px;
+        }
+
+        @media (max-width: 540px) {
+            .container {
+                padding: 1.6rem 1rem;
+                border-radius: 20px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .grid-cards {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .highlight-block {
+                padding: 1rem 1rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            body {
+                padding: 0.6rem;
+            }
+            .container {
+                padding: 1.2rem 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>
+        <span>九游app</span>
+        <small>日常查询 · 对照阅读</small>
+    </h1>
+    <div class="subhead">
+        围绕游戏资讯、榜单变化与版本脉络，提供一份温和的延伸参考。
+    </div>
+
+    <div class="grid-cards">
+        <div class="card">
+            <h3><i></i>摘要速览</h3>
+            <p>覆盖近期热门手游动态、版本更新摘要及社区讨论方向，方便快速对照自己关注的游戏状态。</p>
+            <span class="tag">信息整理</span>
+        </div>
+        <div class="card">
+            <h3><i></i>亮点脉络</h3>
+            <p>从活动日历、新角色/新地图到平衡性调整，罗列已确认或高讨论度的内容，供你按需延伸。</p>
+            <span class="tag">版本观察</span>
+        </div>
+        <div class="card">
+            <h3><i></i>使用建议</h3>
+            <p>适合用作碎片时间浏览、横向对比多个游戏，或查询过往更新记录，保持对趋势的感知。</p>
+            <span class="tag">轻量查阅</span>
+        </div>
+        <div class="card">
+            <h3><i></i>延伸阅读</h3>
+            <p>附带关联的社区摘要、数据示意图及官方说明链接，不替代深度攻略，但可作为出发点。</p>
+            <span class="tag">索引参考</span>
+        </div>
+    </div>
+
+    <div class="highlight-block">
+        <p><strong>关于日常查询与对照</strong><br>
+        如果你习惯在空闲时翻阅游戏动态，或想了解某个版本的前后变化，<a href="https://new-9uapp.com" style="color:#0e6d7c; font-weight:500; text-decoration:underline; text-underline-offset:3px;">九游app</a> 的信息聚合视角可以提供一个安静的起点。这里不强调时效性轰炸，而是尝试把散落的讨论、公告和玩家反馈整理成可对照的条目，方便你按自己的节奏延伸。无论是回顾上个赛季的改动，还是浏览近期活动排期，都能找到对应的索引。</p>
+    </div>
+
+    <div class="faq-mini">
+        <div class="faq-item">
+            <strong>❔ 适合什么样的使用场景？</strong>
+            <span>当你需要快速了解一款游戏的近期动态，或者想知道某个更新是否已实装，可以在这里先看摘要，再决定是否深入原文。也适合在多个游戏之间做横向对比。</span>
+        </div>
+        <div class="faq-item">
+            <strong>❔ 信息来源可靠吗？</strong>
+            <span>内容基于官方公告、开发者日志以及经过交叉验证的社区整理，保持克制引用，不夸大未确认信息。但建议以游戏内实际内容为准。</span>
+        </div>
+        <div class="faq-item">
+            <strong>❔ 能否替代游戏官网或攻略站？</strong>
+            <span>不能替代。九游app 定位是辅助性的查询与对照工具，帮助你更快建立上下文，具体攻略、数值或官方细节仍需参考原始来源。</span>
+        </div>
+    </div>
+
+    <div class="action-line">
+        <p>从摘要到延伸，日常游戏信息查询可以更从容。<br> 
+        如果你需要浏览整理后的动态与对比，可以看看 <a href="https://new-9uapp.com">九游app</a> 的页面结构。</p>
+    </div>
+
+    <div class="footnote">
+        页面内容仅供参考，不构成任何形式的建议或承诺。请以游戏内实际信息为准。
+    </div>
+</div>
+</body>
+</html>
